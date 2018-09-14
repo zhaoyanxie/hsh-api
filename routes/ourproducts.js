@@ -5,8 +5,9 @@ const router = express.Router();
 router.use(express.json());
 
 // Get all products
-router.get("/", (req, res, next) => {
-  res.json({ message: "From our products page" });
+router.get("/", async (req, res, next) => {
+  const products = await Product.find();
+  res.json(products);
 });
 
 // Get a particular product
@@ -14,6 +15,7 @@ router.get("/", (req, res, next) => {
 // Add a product
 router.post("/add", async (req, res, next) => {
   const newProduct = new Product({
+    category: req.body.category,
     code: req.body.code,
     description: req.body.description,
     minQty: req.body.minQty,
