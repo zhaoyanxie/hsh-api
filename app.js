@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
+const index = require("./routes/index");
 
-app.get("/", (req, res, next) => {
-  res.json({ message: "express is up!" });
-});
+index(app);
 
 module.exports = app;
