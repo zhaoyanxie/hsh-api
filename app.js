@@ -8,7 +8,10 @@ const app = express();
 app.use(express.json());
 
 var corsOptions = {
-  origin: [/http:\/\/localhost:.*/, /http[s]*:\/\/zhaoyanxie.*\.github.io/],
+  origin: [
+    /http:\/\/localhost:.*/,
+    /http[s]*:\/\/hsh-singapore.*\.herokuapp.com/
+  ],
   credentials: true
 };
 
