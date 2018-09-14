@@ -1,6 +1,5 @@
 const express = require("express");
 const Product = require("../models/product");
-
 const router = express.Router();
 router.use(express.json());
 
@@ -19,7 +18,7 @@ router.post("/add", async (req, res, next) => {
     code: req.body.code,
     description: req.body.description,
     minQty: req.body.minQty,
-    UOM: req.body.UOM
+    uom: req.body.uom
   });
 
   await newProduct.save();
@@ -32,5 +31,5 @@ router.post("/add", async (req, res, next) => {
 
 // Delete a product
 module.exports = app => {
-  app.use("/our-products", router);
+  app.use(`/our-products`, router);
 };
