@@ -7,7 +7,7 @@ router.use(express.json());
 router.get("/", async (req, res, next) => {
   const products = await Product.find();
   res.json(products);
-});
+}); 
 
 // Get a particular product
 

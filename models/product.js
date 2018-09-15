@@ -4,7 +4,7 @@ const ProductSchema = new mongoose.Schema({
   code: String,
   description: String,
   minQty: Number,
-  UOM: String,
+  uom: String,
   category: String
 });
 
