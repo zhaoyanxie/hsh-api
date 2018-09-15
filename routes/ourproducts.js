@@ -7,7 +7,7 @@ router.use(express.json());
 router.get("/", async (req, res, next) => {
   const products = await Product.find();
   res.json(products);
-}); 
+});
 
 // Get a particular product
 
@@ -18,7 +18,8 @@ router.post("/add", async (req, res, next) => {
     code: req.body.code,
     description: req.body.description,
     minQty: req.body.minQty,
-    uom: req.body.uom
+    uom: req.body.uom,
+    imgSrc: req.body.imgSrc
   });
 
   await newProduct.save();
