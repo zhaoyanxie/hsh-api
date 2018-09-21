@@ -13,7 +13,6 @@ router.get("/", async (req, res, next) => {
 
 // Add a product
 router.post("/add", async (req, res, next) => {
-  console.log(req.body.details);
   const newProduct = new Product({
     category: req.body.category,
     details: {
