@@ -9,12 +9,28 @@ router.get("/", async (req, res, next) => {
   res.json(products);
 });
 
+// Get all categories
+router.get("/categories", async (req, res, next) => {
+  const products = await Product.find();
+  const categories = [];
+  products.forEach(product => {
+    if (categories.indexOf(product.category) === -1) {
+      categories.push(product.category);
+    }
+  });
+  res.json(categories);
+});
+
 // Get a particular product
 
 // Add a product
 router.post("/add", async (req, res, next) => {
   const newProduct = new Product({
-    category: req.body.category,
+    category: req.body.category
+      .toLowerCase()
+      .split(" ")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" "),
     details: {
       code: req.body.details.code,
       description: req.body.details.description,
@@ -30,6 +46,20 @@ router.post("/add", async (req, res, next) => {
     message: "New product added successfully"
   });
 });
+
+// Get products of a certain category
+router.get("/:category", async (req, res, next) => {
+  const category = req.params.category
+    .toLowerCase()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+  const productsOfCategory = await Product.find({
+    category: category
+  });
+  res.json(productsOfCategory);
+});
+
 // Edit a product
 
 // Delete a product
