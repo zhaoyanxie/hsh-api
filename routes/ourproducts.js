@@ -13,13 +13,16 @@ router.get("/", async (req, res, next) => {
 
 // Add a product
 router.post("/add", async (req, res, next) => {
+  console.log(req.body.details);
   const newProduct = new Product({
     category: req.body.category,
-    code: req.body.code,
-    description: req.body.description,
-    minQty: req.body.minQty,
-    uom: req.body.uom,
-    imgSrc: req.body.imgSrc
+    details: {
+      code: req.body.details.code,
+      description: req.body.details.description,
+      minQty: req.body.details.minQty,
+      uom: req.body.details.uom,
+      imgSrc: req.body.details.imgSrc
+    }
   });
 
   await newProduct.save();
