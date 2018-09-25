@@ -23,10 +23,13 @@ describe("our-products route", () => {
 
   test("POST /our-products/add", async () => {
     const newProduct = {
-      code: "C-001",
-      description: "Ironing Board Cover",
-      UOM: "PCS/CTN",
-      minQty: 50
+      category: "Kitchen Supplies",
+      details: {
+        code: "C-001",
+        description: "Ironing Board Cover",
+        uom: "PCS/CTN",
+        minQty: 50
+      }
     };
 
     const initialProducts = await Product.find();
