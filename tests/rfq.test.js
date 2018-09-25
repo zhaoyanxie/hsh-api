@@ -32,7 +32,7 @@ describe("rfq/all route", () => {
 
     const initialRfqs = await Rfq.find();
     const response = await request(app)
-      .post("rfq/add")
+      .post("/rfq/add")
       .send(newRfq);
     const allRfqs = await Rfq.find();
 
