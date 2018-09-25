@@ -27,7 +27,17 @@ describe("rfq/all route", () => {
       contactName: "James Park",
       contactNumber: "9999 9999",
       email: "parkjames@email.com",
-      dueDate: "20-Sep-2019"
+      dueDate: "20-Sep-2019",
+      rfqItems: [
+        {
+          productId: "1234",
+          description: "Ironing Board Cover",
+          code: "C-130",
+          minQty: "90",
+          uom: "PCS/CTN",
+          qty: 5
+        }
+      ]
     };
 
     const initialRfqs = await Rfq.find();

@@ -17,7 +17,8 @@ router.post("/add", async (req, res, next) => {
     contactName: req.body.contactName,
     contactNumber: req.body.contactNumber,
     email: req.body.email,
-    dueDate: req.body.dueDate
+    dueDate: req.body.dueDate,
+    rfqItems: req.body.rfqItems
   });
 
   await newRfq.save();
