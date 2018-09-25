@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const RfqSchema = new mongoose.Schema({
+  rfqNo: String,
   companyName: String,
   companyAddress: String,
   contactName: String,

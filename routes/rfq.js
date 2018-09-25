@@ -12,6 +12,7 @@ router.get("/all", async (req, res, next) => {
 // Post an rfq
 router.post("/add", async (req, res, next) => {
   const newRfq = new Rfq({
+    rfqNo: req.body.rfqNo,
     companyName: req.body.companyName,
     companyAddress: req.body.companyAddress,
     contactName: req.body.contactName,

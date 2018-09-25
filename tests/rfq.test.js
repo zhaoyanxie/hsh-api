@@ -22,6 +22,7 @@ describe("rfq/all route", () => {
 
   test("POST /rfq/add", async () => {
     const newRfq = {
+      rfqNo: "123456",
       companyName: "Fake Company",
       companyAddress: "150 Cantonment Road, Singapore 089762",
       contactName: "James Park",
