@@ -6,6 +6,13 @@ router.use(express.json());
 // Get all rfqs
 router.get("/all", async (req, res, next) => {
   const rfq = await Rfq.find();
+  // const rfqNo = rfq.map(rfq => rfq.rfqNo);
+  res.status(201).json(rfq);
+});
+
+router.get("/all/:rfqNo", async (req, res, next) => {
+  const rfqNo = req.params.rfqNo;
+  const rfq = await Rfq.find({ rfqNo });
   res.status(201).json(rfq);
 });
 
@@ -19,7 +26,8 @@ router.post("/add", async (req, res, next) => {
     contactNumber: req.body.contactNumber,
     email: req.body.email,
     dueDate: req.body.dueDate,
-    rfqItems: req.body.rfqItems
+    rfqItems: req.body.rfqItems,
+    rfqDate: req.body.rfqDate
   });
 
   await newRfq.save();

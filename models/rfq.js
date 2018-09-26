@@ -8,7 +8,8 @@ const RfqSchema = new mongoose.Schema({
   contactNumber: String,
   email: String,
   dueDate: String,
-  rfqItems: Array
+  rfqItems: Array,
+  rfqDate: String
 });
 
 module.exports = mongoose.model("Rfq", RfqSchema);

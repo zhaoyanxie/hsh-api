@@ -50,4 +50,12 @@ describe("rfq/all route", () => {
     expect(response.status).toBe(201);
     expect(allRfqs.length).toBe(initialRfqs.length + 1);
   });
+
+  test("GET /rfq/all/:rfqNo", async () => {
+    const responseAll = await request(app).get("/rfq/all");
+    const rfqNo = responseAll.body[0].rfqNo;
+
+    const responseOne = await request(app).get(`/rfq/all/${rfqNo}`);
+    expect(responseOne.status).toBe(201);
+  });
 });
