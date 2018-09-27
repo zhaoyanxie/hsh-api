@@ -18,7 +18,12 @@ const tearDownMongoose = async () => {
   mongod.stop();
 };
 
+const dropDatabase = async () => {
+  await mongoose.connection.db.dropDatabase();
+};
+
 module.exports = {
   setUpMongoose,
-  tearDownMongoose
+  tearDownMongoose,
+  dropDatabase
 };
