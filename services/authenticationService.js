@@ -21,8 +21,6 @@ const signUp = async (req, res, next) => {
   res
     .status(201)
     .cookie("jwt", token, COOKIE_CONFIGURATION)
-    .cookie("userId", user.id)
-    .cookie("username", username)
     .json(user.toDisplay());
 };
 
