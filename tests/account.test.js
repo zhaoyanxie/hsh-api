@@ -30,4 +30,36 @@ describe("POST /signup", () => {
       })
     );
   });
+
+  test("should return response status 400 if username already exists", async () => {
+    const response = await request(app)
+      .post("/account/signup")
+      .send(TEST_USER);
+
+    expect(response.status).toBe(400);
+  });
+
+  test("should return response status 400 if username format is invalid", async () => {
+    const response = await request(app)
+      .post("/account/signup")
+      .send({ username: "!@#$%^", password: "password" });
+
+    expect(response.status).toBe(400);
+  });
+
+  test("should return response status 400 if username is empty", async () => {
+    const response = await request(app)
+      .post("/account/signup")
+      .send({ password: "password" });
+
+    expect(response.status).toBe(400);
+  });
+
+  test("should return response status 400 if password is empty", async () => {
+    const response = await request(app)
+      .post("/account/signup")
+      .send({ username: "testuser" });
+
+    expect(response.status).toBe(400);
+  });
 });
