@@ -21,13 +21,13 @@ describe("POST /signup", () => {
 
     expect(response.status).toBe(201);
     expect(users.length).toBe(1);
-    // expect(response.headers["set-cookie"]).toBeDefined();
-    // expect(Object.keys(response.body).length).toBe(2);
-    // expect(response.body).toEqual(
-    //   expect.objectContaining({
-    //     _id: expect.any(String),
-    //     username: expect.any(String)
-    //   })
-    // );
+    expect(response.headers["set-cookie"]).toBeDefined();
+    expect(Object.keys(response.body).length).toBe(2);
+    expect(response.body).toEqual(
+      expect.objectContaining({
+        _id: expect.any(String),
+        username: expect.any(String)
+      })
+    );
   });
 });
