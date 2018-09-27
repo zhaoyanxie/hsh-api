@@ -63,3 +63,25 @@ describe("POST /signup", () => {
     expect(response.status).toBe(400);
   });
 });
+
+describe("POST /signin", () => {
+  test("should return a status of 201 with valid username and password", async () => {
+    const response = await request(app)
+      .post("/account/signin")
+      .send(TEST_USER);
+
+    expect(response.status).toBe(200);
+    expect(response.headers["set-cookie"]).toBeDefined();
+  });
+
+  test("should return a status of 401 with an existing username but false password", async () => {
+    const response = await request(app)
+      .post("/account/signin")
+      .send({
+        username: TEST_USER.username,
+        password: "wrong password"
+      });
+
+    expect(response.status).toBe(401);
+  });
+});

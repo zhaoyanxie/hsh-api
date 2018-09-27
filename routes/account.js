@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.use(express.json());
 router.post("/signup", asyncErrorHandler(signUp));
+router.post("/signin", signIn);
 
 module.exports = app => {
   app.use("/account", router, error400sHandler);
