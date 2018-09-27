@@ -6,6 +6,7 @@ const {
   tearDownMongoose,
   dropDatabase
 } = require("./testUtils");
+const { TEST_USER } = require("./testData");
 
 beforeAll(setUpMongoose);
 afterAll(tearDownMongoose);
@@ -14,12 +15,9 @@ describe("POST /signup", () => {
   test("should return status 201 and store in database", async () => {
     const response = await request(app)
       .post("/account/signup")
-      .send({
-        username: "testuser",
-        password: "password"
-      });
+      .send(TEST_USER);
 
-    const users = await User.find({ username: "testuser" });
+    const users = await User.find({ username: TEST_USER.username });
 
     expect(response.status).toBe(201);
     expect(users.length).toBe(1);
