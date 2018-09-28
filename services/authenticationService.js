@@ -39,8 +39,6 @@ const signIn = async (req, res, next) => {
 
     res
       .cookie("jwt", token, COOKIE_CONFIGURATION)
-      .cookie("userId", user.id)
-      .cookie("username", username)
       .json({ message: "Signed in successfully!" });
   } else {
     res.status(401).json({ message: "passwords did not match" });
