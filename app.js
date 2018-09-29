@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const index = require("./routes/index");
 const ourProducts = require("./routes/ourproducts");
@@ -10,6 +11,7 @@ const admin = require("./routes/admin");
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 var corsOptions = {
   origin: [
@@ -22,9 +24,9 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 index(app);
+admin(app);
 ourProducts(app);
 rfq(app);
 account(app);
-admin(app);
 
 module.exports = app;
