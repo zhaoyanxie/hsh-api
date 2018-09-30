@@ -23,29 +23,7 @@ router.get("/categories", async (req, res, next) => {
 
 // Get a particular product
 
-// Add a product
-router.post("/add", async (req, res, next) => {
-  const newProduct = new Product({
-    category: req.body.category
-      .toLowerCase()
-      .split(" ")
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" "),
-    details: {
-      code: req.body.details.code,
-      description: req.body.details.description,
-      minQty: req.body.details.minQty,
-      uom: req.body.details.uom,
-      imgSrc: req.body.details.imgSrc
-    }
-  });
 
-  await newProduct.save();
-
-  res.status(201).json({
-    message: "New product added successfully"
-  });
-});
 
 // Get products of a certain category
 router.get("/:category", async (req, res, next) => {

@@ -20,25 +20,4 @@ describe("our-products route", () => {
 
     expect(response.status).toBe(200);
   });
-
-  test("POST /our-products/add", async () => {
-    const newProduct = {
-      category: "Kitchen Supplies",
-      details: {
-        code: "C-001",
-        description: "Ironing Board Cover",
-        uom: "PCS/CTN",
-        minQty: 50
-      }
-    };
-
-    const initialProducts = await Product.find();
-    const response = await request(app)
-      .post("/our-products/add")
-      .send(newProduct);
-    const newProducts = await Product.find();
-
-    expect(response.status).toBe(201);
-    expect(newProducts.length).toBe(initialProducts.length + 1);
-  });
 });
