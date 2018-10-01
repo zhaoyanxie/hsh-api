@@ -8,6 +8,9 @@ mongoose.connect(
   mongodbUri,
   { useNewUrlParser: true }
 );
+const path = require("path");
+app.use(express.static(path.join(__dirname, "client/build")));
+
 const db = mongoose.connection;
 db.on("error", error => {
   console.error("An error occured!", error);
